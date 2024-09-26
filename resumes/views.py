@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Resume
 from vacantes.models import Vacante
-
+from datetime import datetime
 import pdfplumber
 import openai
 import os
@@ -25,13 +25,19 @@ def uploadResume(request):
         pdf_file = request.FILES['pdf']
         texto = leer_pdf(pdf_file)
 
+        # Guardar el resumen
         resume = Resume(nombre=pdf_file.name, contenido=texto)
         resume.save()
 
-        return redirect('resultado')
+        # Obtener el vacante_id del formulario
+        vacante_id = request.POST.get('vacante_id')
 
-    return render(request,'resume.html')
+        # Redirigir a la vista resultado con los IDs correspondientes
+        return redirect('resultado', resume_id=resume.id, vacante_id=vacante_id)
 
+    # Obtener todas las vacantes para el formulario
+    vacantes = Vacante.objects.filter(fecha_cierre__gte=datetime.now())
+    return render(request, 'resume.html', {'vacantes': vacantes})
 
 
 # Cargar las variables de entorno desde api_key.env

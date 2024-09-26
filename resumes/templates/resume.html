@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="container mt-5 ">
+  <div class="container mt-5">
     <div class="row d-flex justify-content-center g-4">
       <div class="col">
         <div class="card mb-3 h-100">
@@ -10,15 +10,26 @@
             <img src="/media/resumes/images/landingImage.webp" class="card-img-top" alt="Error al cargar la imagen">
             <p class="card-text mt-3">Somos una empresa dedicada a facilitar a las personas que buscan empleo la adaptación de sus hojas de vida a puestos de trabajo, anímate y prueba tú mismo la magia de JobSmart.</p>
 
-            <!-- Asegúrate de usar enctype y method POST -->
+            <!-- Formulario para subir el archivo y seleccionar la vacante -->
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="mb-3">
                   <label for="formFile" class="form-label">Ingrese un archivo:</label>
-                  <input class="form-control" type="file" id="formFile" name="pdf">
+                  <input class="form-control" type="file" id="formFile" name="pdf" required>
               </div>
-              <button type="submit" class="btn btn-primary">Elegir vacante</button>
-              <button type="button" class="btn btn-info">Buscar vacante </button>
+
+              <div class="mb-3">
+                  <label for="vacanteSelect" class="form-label">Selecciona una vacante:</label>
+                  <select class="form-select" id="vacanteSelect" name="vacante_id" required>
+                      <option value="" disabled selected>-- Seleccione una vacante --</option>
+                      {% for vacante in vacantes %}
+                          <option value="{{ vacante.id }}">{{ vacante.titulo }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="button" class="btn btn-info">Buscar vacante</button>
             </form>
 
           </div> 
