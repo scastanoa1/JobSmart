@@ -23,10 +23,10 @@
                 <a class="nav-link" href="{% url 'admin:index' %}">Registrate</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Buscar una vacante.." aria-label="Search">
-              <button class="btn btn-outline-info "  data-bs-toggle="button" type="submit">Buscar</button>
-            </form>
+            <form action="{% url 'vacantes' %}" method="GET" class="d-flex">
+              <input class="form-control me-2" type="text" placeholder="Buscar una vacante..." name="buscarVacante">
+              <button class="btn btn-outline-info" type="submit">Buscar</button>
+          </form>
           </div>
         </div>
       </nav>
@@ -42,7 +42,7 @@
   <div class="container">
     <div class="row">
       <div class ="text-center p-4">
-        <h4>@ 2024 Copyright - Miguel Alejandro Gomez Duque</h4>
+        <h4>@ 2024 Copyright - JobSmart</h4>
       </div>
     </div>
   </div>

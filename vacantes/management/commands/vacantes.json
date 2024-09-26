@@ -1,0 +1,167 @@
+[
+    {
+        "titulo": "Desarrollador Backend Python",
+        "descripcion": "Se busca desarrollador con experiencia en Python, Django y Flask para unirse a nuestro equipo.",
+        "area": "Tecnología",
+        "ubicacion": "Medellín",
+        "fecha_publicacion": "2023-10-15",
+        "fecha_cierre": "2023-11-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 5000000.00
+    },
+    {
+        "titulo": "Diseñador Gráfico",
+        "descripcion": "Se requiere diseñador gráfico con experiencia en Adobe Illustrator y Photoshop para crear materiales de marketing.",
+        "area": "Diseño",
+        "ubicacion": "Bogotá",
+        "fecha_publicacion": "2023-11-01",
+        "fecha_cierre": "2023-12-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 4000000.00
+    },
+    {
+        "titulo": "Analista de Datos",
+        "descripcion": "Se busca analista de datos con conocimientos en SQL, Python y herramientas de visualización de datos.",
+        "area": "Análisis de Datos",
+        "ubicacion": "Cali",
+        "fecha_publicacion": "2023-12-15",
+        "fecha_cierre": "2024-01-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 6000000.00
+    },
+    {
+        "titulo": "Gerente de Ventas",
+        "descripcion": "Se requiere gerente de ventas con experiencia en liderazgo de equipos y generación de negocios.",
+        "area": "Ventas",
+        "ubicacion": "Barranquilla",
+        "fecha_publicacion": "2024-01-01",
+        "fecha_cierre": "2024-02-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 8000000.00
+    },
+    {
+        "titulo": "Asistente Administrativo",
+        "descripcion": "Se busca asistente administrativo con habilidades organizativas y atención al cliente.",
+        "area": "Administración",
+        "ubicacion": "Medellín",
+        "fecha_publicacion": "2024-02-15",
+        "fecha_cierre": "2024-03-15",
+        "estado": "open",
+        "jornada": "halfTime",
+        "salario": 2500000.00
+    },
+    {
+        "titulo": "Desarrollador Frontend",
+        "descripcion": "Se requiere desarrollador frontend con experiencia en HTML, CSS, JavaScript y frameworks como React o Angular.",
+        "area": "Tecnología",
+        "ubicacion": "Bogotá",
+        "fecha_publicacion": "2024-03-01",
+        "fecha_cierre": "2024-04-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 5500000.00
+    },
+    {
+        "titulo": "Diseñador UX/UI",
+        "descripcion": "Se busca diseñador UX/UI con experiencia en investigación de usuarios y creación de interfaces intuitivas.",
+        "area": "Diseño",
+        "ubicacion": "Cali",
+        "fecha_publicacion": "2024-04-15",
+        "fecha_cierre": "2024-05-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 6500000.00
+    },
+    {
+        "titulo": "Analista de Negocios",
+        "descripcion": "Se busca analista de negocios con habilidades de comunicación y análisis para identificar oportunidades de mejora.",
+        "area": "Análisis de Negocios",
+        "ubicacion": "Barranquilla",
+        "fecha_publicacion": "2024-05-01",
+        "fecha_cierre": "2024-06-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 7000000.00
+    },
+    {
+        "titulo": "Gerente de Marketing",
+        "descripcion": "Se requiere gerente de marketing con experiencia en estrategias digitales y gestión de marca.",
+        "area": "Marketing",
+        "ubicacion": "Medellín",
+        "fecha_publicacion": "2024-06-15",
+        "fecha_cierre": "2024-07-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 9000000.00
+    },
+    {
+        "titulo": "Asistente Contable",
+        "descripcion": "Se busca asistente contable con conocimientos en contabilidad básica y manejo de software contable.",
+        "area": "Contabilidad",
+        "ubicacion": "Bogotá",
+        "fecha_publicacion": "2024-07-01",
+        "fecha_cierre": "2024-08-01",
+        "estado": "open",
+        "jornada": "halfTime",
+        "salario": 2800000.00
+    },
+    {
+        "titulo": "Desarrollador Full Stack",
+        "descripcion": "Se requiere desarrollador full stack con experiencia en desarrollo frontend y backend.",
+        "area": "Tecnología",
+        "ubicacion": "Cali",
+        "fecha_publicacion": "2024-08-15",
+        "fecha_cierre": "2024-09-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 6000000.00
+    },
+    {
+        "titulo": "Diseñador Gráfico Senior",
+        "descripcion": "Se busca diseñador gráfico senior con experiencia en liderazgo de equipos y proyectos de diseño complejos.",
+        "area": "Diseño",
+        "ubicacion": "Barranquilla",
+        "fecha_publicacion": "2024-09-01",
+        "fecha_cierre": "2024-10-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 5000000.00
+    },
+    {
+        "titulo": "Analista de Datos Senior",
+        "descripcion": "Se busca analista de datos senior con experiencia en análisis avanzado de datos y modelado predictivo.",
+        "area": "Análisis de Datos",
+        "ubicacion": "Medellín",
+        "fecha_publicacion": "2024-10-15",
+        "fecha_cierre": "2024-11-15",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 8000000.00
+    },
+    {
+        "titulo": "Gerente de Producto",
+        "descripcion": "Se requiere gerente de producto con experiencia en desarrollo y lanzamiento de nuevos productos.",
+        "area": "Producto",
+        "ubicacion": "Bogotá",
+        "fecha_publicacion": "2024-11-01",
+        "fecha_cierre": "2024-12-01",
+        "estado": "open",
+        "jornada": "fullTime",
+        "salario": 10000000.00
+    },
+    {
+        "titulo": "Asistente de Recursos Humanos",
+        "descripcion": "Se busca asistente de recursos humanos con habilidades organizativas y atención al detalle.",
+        "area": "Recursos Humanos",
+        "ubicacion": "Cali",
+        "fecha_publicacion": "2024-12-15",
+        "fecha_cierre": "2025-01-15",
+        "estado": "open",
+        "jornada": "halfTime",
+        "salario": 2500000.00
+    }
+]
