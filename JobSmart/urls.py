@@ -26,6 +26,7 @@ urlpatterns = [
     path('vacantes/', vacantesViews.vacantes,name='vacantes'),
     path('',resumesViews.showHomepage, name='home'),
     path('resume/',resumesViews.uploadResume, name='resumes'),
+    path('resultado/', resumesViews.resultado, name='resultado'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

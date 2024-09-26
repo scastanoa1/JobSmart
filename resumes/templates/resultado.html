@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center g-4">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header text-center">
+            ¡Subida exitosa!
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">¡Hoja de vida cargada con éxito!</h5>
+            <p class="card-text">Tu hoja de vida ha sido procesada y guardada. A continuación, puedes revisar las recomendaciones que JobSmart ha generado para ti.</p>
+            
+            <!-- Opcional: Enlace para ver las recomendaciones o hacer otras acciones -->
+            <a href="{% url 'home' %}" class="btn btn-primary">Ver recomendaciones</a>
+            <a href="{% url 'resumes' %}" class="btn btn-secondary mt-2">Subir otra hoja de vida</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
