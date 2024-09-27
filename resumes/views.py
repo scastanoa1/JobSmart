@@ -41,38 +41,44 @@ def uploadResume(request):
 
 
 # Cargar las variables de entorno desde api_key.env
-load_dotenv(dotenv_path='api_key.env')
+"""_ = load_dotenv('../api_keys.env')
 
 # Obtener la clave de API desde el archivo .env
 openai.api_key = os.getenv('OPENAI_API_KEY')
+if not openai.api_key:
+    print("Error: la clave de la API de OpenAI no se ha cargado correctamente.")
+else:
+    print(f"Clave API cargada: {openai.api_key}")"""
 
+openai.api_key = 'clave'
 def obtener_recomendaciones(contenido_cv, vacante):
+    """Función que utiliza la API de OpenAI para obtener recomendaciones para el CV"""
     prompt = f"""
-    Un candidato ha aplicado a la siguiente vacante:
-    Título de la vacante: {vacante.titulo}
-    Descripción: {vacante.descripcion}
-    Area: {vacante.area}
-    Ubicación: {vacante.ubicacion}
+    Dada la siguiente descripción de una vacante y el contenido de una hoja de vida, 
+    proporciona recomendaciones sobre cómo mejorar la hoja de vida para que se ajuste mejor a la vacante.
 
-    Aquí está el contenido de su hoja de vida:
+    Descripción de la vacante:
+    {vacante.descripcion}  # Asumiendo que 'descripcion' es un campo en el modelo Vacante
+
+    Contenido de la hoja de vida:
     {contenido_cv}
 
-    Por favor, proporciona recomendaciones detalladas sobre cómo el candidato puede adaptar su hoja de vida para que se ajuste mejor a esta vacante.
+    Recomendaciones:
     """
-    
-    # Llamada a la API de ChatGPT
+
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=prompt,
-            max_tokens=500,
-            temperature=0.7
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Puedes elegir el modelo que prefieras
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=500  # Ajusta el número de tokens según sea necesario
         )
-        recomendaciones = response.choices[0].text.strip()
-        return recomendaciones
+        recomendaciones = response['choices'][0]['message']['content']
+        return recomendaciones.strip()
     except Exception as e:
         print(f"Error al obtener recomendaciones: {e}")
         return "No se pudieron generar recomendaciones en este momento."
+
+
 
 def resultado(request, resume_id, vacante_id):
     resume = get_object_or_404(Resume, id=resume_id)
