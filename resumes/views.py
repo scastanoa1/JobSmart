@@ -7,6 +7,15 @@ import openai
 import os
 from dotenv import load_dotenv
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Resume
+from vacantes.models import Vacante
+from datetime import datetime
+import pdfplumber
+import openai
+import os
+from dotenv import load_dotenv
+
 
 # Create your views here.
 def showHomepage(request):
