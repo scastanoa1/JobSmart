@@ -23,9 +23,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls,name='Admin'),
-    path('vacantes/', vacantesViews.vacantes,name='vacantes'),
+    path('vacantes/', vacantesViews.busquedaVacantes,name='vacantes'),
     path('',resumesViews.showHomepage, name='home'),
     path('resume/',resumesViews.uploadResume, name='resumes'),
+    path('resultado/<int:resume_id>/<int:vacante_id>/', resumesViews.resultado, name='resultado'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

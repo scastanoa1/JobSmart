@@ -1,0 +1,4 @@
+pdfplumber
+openai==0.28
+python-dotenv
+requests
