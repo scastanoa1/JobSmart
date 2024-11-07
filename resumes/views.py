@@ -7,6 +7,8 @@ import openai
 import os
 from dotenv import load_dotenv
 
+load_dotenv(dotenv_path='api_key.env')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Create your views here.
 def showHomepage(request):
@@ -43,18 +45,6 @@ def calcular_nivel_mejora(recomendaciones_aplicadas, total_recomendaciones):
     if total_recomendaciones == 0:
         return 0
     return (recomendaciones_aplicadas / total_recomendaciones) * 100
-
-# Cargar las variables de entorno desde api_key.env
-"""_ = load_dotenv('../api_keys.env')
-
-# Obtener la clave de API desde el archivo .env
-openai.api_key = os.getenv('OPENAI_API_KEY')
-if not openai.api_key:
-    print("Error: la clave de la API de OpenAI no se ha cargado correctamente.")
-else:
-    print(f"Clave API cargada: {openai.api_key}")"""
-
-openai.api_key = ''
 
 def calcularRelevancia(contenido_cv, vacante): #mostrar el %
     """Función que utiliza la API de OpenAI para calcular la relevancia del CV con respecto a la vacante"""
