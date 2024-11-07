@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'resumes',
     'vacantes',
+    'accounts',
 ]
+
+AUTH_USER_MODEL= 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
