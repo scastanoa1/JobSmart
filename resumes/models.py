@@ -4,7 +4,7 @@ from accounts.models import User
 class Resume(models.Model):
     nombre = models.CharField(max_length=255)
     contenido = models.TextField()
-    usuario = models.ForeignKey(User,on_delete=models.CASCADE, default='admin.id')
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE,null=True ,blank=True)
 
     def __str__(self):
         return self.nombre
