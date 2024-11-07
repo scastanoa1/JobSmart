@@ -32,12 +32,13 @@ def uploadResume(request):
         # Obtener el vacante_id del formulario
         vacante_id = request.POST.get('vacante_id')
 
-        # Redirigir a la vista resultado con los IDs correspondientes
-        return redirect('resultado', resume_id=resume.id, vacante_id=vacante_id)
+        # Redirigir a la vista de preguntas con los IDs correspondientes
+        return redirect('iniciar_proceso', resume_id=resume.id, vacante_id=vacante_id)
 
     # Obtener todas las vacantes para el formulario
     vacantes = Vacante.objects.filter(fecha_cierre__gte=datetime.now())
-    return render(request, 'resume.html', {'vacantes': vacantes})
+    return render(request, 'resume.html', {'vacantes': vacantes})  # Cambia 'resultado_preguntas.html' a 'resume.html'
+
 
 
 # Cargar las variables de entorno desde api_key.env
@@ -52,40 +53,76 @@ else:
 
 openai.api_key = ''
 
-def obtenerRecomendaciones(contenido_cv, vacante):
-    """Función que utiliza la API de OpenAI para obtener recomendaciones para el CV"""
-    prompt = f"""
-    Dada la siguiente descripción de una vacante y el contenido de una hoja de vida, 
-    proporciona recomendaciones sobre cómo mejorar la hoja de vida para que se ajuste mejor a la vacante.
-
-    Descripción de la vacante:
-    {vacante.descripcion}  # Asumiendo que 'descripcion' es un campo en el modelo Vacante
-
-    Contenido de la hoja de vida:
-    {contenido_cv}
-
-    Recomendaciones:
-    """
-
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Puedes elegir el modelo que prefieras
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=500  # Ajusta el número de tokens según sea necesario
-        )
-        recomendaciones = response['choices'][0]['message']['content']
-        return recomendaciones.strip()
-    except Exception as e:
-        print(f"Error al obtener recomendaciones: {e}")
-        return "No se pudieron generar recomendaciones en este momento."
-
-
-
-def resultado(request, resume_id, vacante_id):
+def obtenerPreguntas(request, resume_id, vacante_id):
     resume = get_object_or_404(Resume, id=resume_id)
     vacante = get_object_or_404(Vacante, id=vacante_id)
 
-    # Obtener recomendaciones basadas en la hoja de vida y la vacante
-    recomendaciones = obtenerRecomendaciones(resume.contenido, vacante)
+    # Fusionar lógica de obtener preguntas en esta función
+    prompt_preguntas = f"""
+    La siguiente vacante y hoja de vida están siendo evaluadas. 
+    Formula tres preguntas que ayuden a entender mejor la experiencia del candidato para mejorar la adecuación del CV a la vacante.
 
-    return render(request, 'resultado.html', {'resume': resume, 'vacante': vacante, 'recomendaciones': recomendaciones})
+    Descripción de la vacante:
+    {vacante.descripcion}
+
+    Contenido de la hoja de vida:
+    {resume.contenido}
+
+    Preguntas:
+    """
+    response_preguntas = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt_preguntas}]
+    )
+    preguntas = [p.strip() for p in response_preguntas['choices'][0]['message']['content'].split("\n") if p.strip()]
+
+    # Redirigir a la página donde el usuario responderá las preguntas
+    return render(request, 'resultado_preguntas.html', {
+        'preguntas': preguntas,
+        'resume_id': resume_id,
+        'vacante_id': vacante_id,
+    })
+
+def generarRecomendacionesFinales(request, resume_id, vacante_id):
+    if request.method == 'POST':
+        # Obtener respuestas del usuario
+        respuestas = [request.POST.get(f'respuesta_{i+1}') for i in range(3)]
+        resume = get_object_or_404(Resume, id=resume_id)
+        vacante = get_object_or_404(Vacante, id=vacante_id)
+
+        # Fusionar lógica de obtener recomendaciones en esta función
+        prompt_recomendaciones = f"""
+        Basado en la siguiente descripción de la vacante y hoja de vida, así como las respuestas proporcionadas por el candidato, 
+        proporciona recomendaciones para mejorar la hoja de vida.
+
+        Descripción de la vacante:
+        {vacante.descripcion}
+
+        Contenido de la hoja de vida:
+        {resume.contenido}
+
+        Respuestas del candidato:
+        {respuestas}
+
+        Recomendaciones:
+        """
+        response_recomendaciones = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt_recomendaciones}]
+        )
+        recomendaciones = response_recomendaciones['choices'][0]['message']['content']
+
+        recomendaciones_items = [item.strip() for item in recomendaciones.split("\n") if item.strip()]
+        recomendaciones_html = "<ul>"
+        
+        for item in recomendaciones_items:
+            recomendaciones_html += f"<li>{item}</li>"
+        
+        recomendaciones_html += "</ul>"
+
+        # Renderizar el resultado
+        return render(request, 'resultado.html', {
+            'resume': resume,
+            'vacante': vacante,
+            'recomendaciones': recomendaciones_html,
+        })

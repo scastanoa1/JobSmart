@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <h5>Responde las siguientes preguntas para una recomendación personalizada:</h5>
+        <form method="post" action="{% url 'generar_recomendaciones' resume_id=resume_id vacante_id=vacante_id %}">
+            {% csrf_token %}
+            {% for pregunta in preguntas %}
+                <div class="mb-3">
+                    <label for="respuesta_{{ forloop.counter }}" class="form-label">{{ pregunta }}</label>
+                    <input type="text" class="form-control" id="respuesta_{{ forloop.counter }}" name="respuesta_{{ forloop.counter }}" required>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Enviar respuestas</button>
+        </form>
+    </div>
+{% endblock content %}

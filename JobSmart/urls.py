@@ -26,7 +26,8 @@ urlpatterns = [
     path('vacantes/', vacantesViews.busquedaVacantes,name='vacantes'),
     path('',resumesViews.showHomepage, name='home'),
     path('resume/',resumesViews.uploadResume, name='resumes'),
-    path('resultado/<int:resume_id>/<int:vacante_id>/', resumesViews.resultado, name='resultado'),
+    path('iniciar_proceso/<int:resume_id>/<int:vacante_id>/', resumesViews.obtenerPreguntas, name='iniciar_proceso'),
+    path('resultado/<int:resume_id>/<int:vacante_id>/', resumesViews.generarRecomendacionesFinales, name='generar_recomendaciones'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
