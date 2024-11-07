@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from resumes import views as resumesViews 
 from vacantes import views as vacantesViews 
 
@@ -28,6 +28,7 @@ urlpatterns = [
     path('resume/',resumesViews.uploadResume, name='resumes'),
     path('iniciar_proceso/<int:resume_id>/<int:vacante_id>/', resumesViews.obtenerPreguntas, name='iniciar_proceso'),
     path('resultado/<int:resume_id>/<int:vacante_id>/', resumesViews.generarRecomendacionesFinales, name='generar_recomendaciones'),
+    path('accounts/', include('accounts.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -22,9 +22,19 @@
             <li class="nav-item">
               <a class="nav-link" style="color: white" href="{% url 'vacantes' %}">Vacantes</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" style="color: white" href="{% url 'admin:index' %}">Registrate</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'loginaccount' %}">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signupaccount' %}">Registrarse</a>
+            </li>
+            
+            {% endif %}
           </ul>
           <form action="{% url 'vacantes' %}" method="GET" class="d-flex">
             <input class="form-control me-2" type="text" placeholder="Buscar una vacante..." name="buscarVacante">
