@@ -8,37 +8,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Custome Resume & Reviewer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            background-color: #2c2c2c;
+            color: #e6e6e6;
         }
         header {
-            background-color: #003366;
-            color: white;
-            padding: 20px 0;
             text-align: center;
+            margin-top: 20px;
+            color: #5ce1e6;
         }
-        section {
-            padding: 20px;
+        .section {
             margin: 20px auto;
-            max-width: 1000px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 800px;
+            background-color: #333;
+            border-radius: 10px;
         }
-        h1, h2, p {
-            margin-bottom: 16px;
+        .section h2 {
+            color: #5ce1e6;
+            margin-bottom: 10px;
         }
-        h1 {
-            font-size: 2.5em;
+
+        .section p, .section ul {
+            color: #e6e6e6;
+        }
+        .section ul {
+            margin-left: 20px;
+        }
+        .section:hover {
+            box-shadow: 0 0 10px rgba(92, 225, 230, 0.6);
+            transition: box-shadow 0.3s ease;
+        }
+        .translate:hover {
+            cursor: pointer;
         }
         footer {
-            background-color: #003366;
-            color: white;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 30px;
+            padding: 10px;
+            background-color: #222;
+            color: #ccc;
         }
     </style>
 </head>
@@ -48,23 +57,23 @@
     <h1>Custome Resume & Reviewer</h1>
 </header>
 
-<section>
-    <h2>¿Quiénes somos?</h2>
+<section class="section">
+    <h2 class="translate">¿Quiénes somos?</h2>
     <p>Somos un equipo de tecnología, recursos humanos y desarrollo de software enfocados en crear herramientas innovadoras que simplifiquen el proceso de búsqueda de empleo. Nuestro proyecto, <strong>JobSmart</strong>, busca optimizar la manera en que los candidatos ajustan sus hojas de vida para cada vacante a la que aplican, ayudándolos a destacar sus habilidades más relevantes y a mejorar sus oportunidades de ser contratados.</p>
 </section>
 
-<section>
-    <h2>¿Por qué somos importantes?</h2>
+<section class="section">
+    <h2 class="translate">¿Por qué somos importantes?</h2>
     <p>En el entorno laboral actual, la personalización del currículum es clave para captar la atención de los reclutadores, pero este proceso suele ser difícil y tedioso para muchos candidatos. Nuestra solución basada en inteligencia artificial ofrece una manera rápida y efectiva de modificar los currículums de forma personalizada para cada oferta laboral, eliminando barreras en el proceso de postulación y aumentando las oportunidades de éxito en el mercado laboral. Al facilitar la optimización de currículums, ayudamos tanto a candidatos como a empresas a ahorrar tiempo y mejorar la calidad de las postulaciones.</p>
 </section>
 
-<section>
-    <h2>¿Cómo funciona nuestro sistema?</h2>
+<section class="section">
+    <h2 class="translate">¿Cómo funciona nuestro sistema?</h2>
     <p>El sistema <strong>JobSmart</strong> utiliza inteligencia artificial para analizar las descripciones de vacantes y los currículums de los candidatos, identificando las habilidades y experiencias clave que deben ser resaltadas para cada oferta. A través de un proceso automático, la herramienta ajusta el formato, estructura y contenido del currículum, garantizando que esté alineado con las expectativas del reclutador. Además, el sistema permite gestionar múltiples perfiles, lo que facilita la postulación a diferentes tipos de vacantes de forma personalizada y eficaz.</p>
 </section>
 
-<section>
-    <h2>Retos Tecnológicos</h2>
+<section class="section">
+    <h2 class="translate">Retos Tecnológicos</h2>
     <p>Algunos de los principales desafíos tecnológicos que enfrentamos incluyen:</p>
     <ul>
         <li>Implementación de algoritmos de procesamiento de lenguaje natural (IA) para interpretar y personalizar currículums.</li>
@@ -72,8 +81,8 @@
     </ul>
 </section>
 
-<section>
-    <h2>Nuestros Objetivos</h2>
+<section class="section">
+    <h2 class="translate">Nuestros Objetivos</h2>
     <p>El objetivo de <strong>JobSmart</strong> es proporcionar una solución automatizada y eficiente para que los candidatos puedan:</p>
     <ul>
         <li>Optimizar sus currículums para cada oferta laboral.</li>
@@ -82,16 +91,10 @@
     </ul>
 </section>
 
+<section class="section">
+    <p>El proyecto <strong>JobSmart</strong> busca desarrollar un sistema de inteligencia artificial que asista a los candidatos en la optimización de sus hojas de vida para cada vacante específica a la que apliquen. Dado que adaptar un currículum para una oferta laboral puede ser un proceso complicado y consume mucho tiempo, la solución propone una plataforma que permita identificar y resaltar automáticamente las cualificaciones y habilidades relevantes de cada candidato, ajustando el formato y contenido de forma eficiente. Esto facilita la creación de hojas de vida personalizadas, mejorando las oportunidades de los candidatos para destacarse frente a los reclutadores. Entre los retos tecnológicos están el procesamiento con IA y la postulación ad-hoc, mientras que las ideas de solución incluyen la gestión de documentos y la creación de perfiles múltiples.</p>
+</section>
+
 </body>
 </html>
-<section
-p>El proyecto "JobSmart" busca desarrollar un sistema de inteligencia artificial que
-    asista a los candidatos en la optimización de sus hojas de vida para cada vacante específica a la que
-    apliquen. Dado que adaptar un currículum para una oferta laboral puede ser un proceso complicado y
-    consume mucho tiempo, la solución propone una plataforma que permita identificar y resaltar
-    automáticamente las cualificaciones y habilidades relevantes de cada candidato, ajustando el formato y
-    contenido de forma eficiente. Esto facilita la creación de hojas de vida personalizadas, mejorando las
-    oportunidades de los candidatos para destacarse frente a los reclutadores. Entre los retos tecnológicos
-    están el procesamiento con IA y la postulación ad-hoc, mientras que las ideas de solución incluyen la
-    gestión de documentos y la creación de perfiles múltiples.</p></section>
 {% endblock content %}

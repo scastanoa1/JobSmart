@@ -1,6 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style>
+  body {
+    background-color: #2c2c2c;
+    color: #fff;
+  }
+  
+  .card {
+    background-color: #2c2c2c;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color:white;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);
+  }
+  
+  .card-header {
+    font-size: 1.5rem;
+    color: #ffd700;
+    animation: headerGlow 2s infinite alternate;
+  }
+  
+  @keyframes headerGlow {
+    from { color: #3adcd3; }
+    to { color: #fbffff; }
+  }
+  
+  .btn-primary, .btn-info {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #ff4500;
+    transform: translateY(-1px);
+  }
+
+  .btn-info:hover {
+    background-color: #00ced1;
+    transform: translateY(-1px);
+  }
+  
+  .card-img-top {
+    border-radius: 10px;
+    transition: transform 0.1s;
+  }
+
+</style>
   <div class="container mt-5">
     <div class="row d-flex justify-content-center g-4">
       <div class="col">
@@ -10,7 +61,6 @@
             <img src="/media/resumes/images/landingImage.webp" class="card-img-top" alt="Error al cargar la imagen">
             <p class="card-text mt-3">Somos una empresa dedicada a facilitar a las personas que buscan empleo la adaptación de sus hojas de vida a puestos de trabajo, anímate y prueba tú mismo la magia de JobSmart.</p>
 
-            <!-- Formulario para subir el archivo y seleccionar la vacante -->
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <div class="mb-3">

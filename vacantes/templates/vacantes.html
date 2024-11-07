@@ -1,8 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+  body {
+    background-color: #2c2c2c;
+    color: #fff;
+  }
+  
+  .card {
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    color: #3adcd3;
+    animation: titleGlow 2s infinite alternate;
+  }
+  
+  @keyframes titleGlow {
+    from { color: #3adcd3; }
+    to { color: #fbffff; }
+  }
+
+  .card-text {
+    color: #ccc;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+  }
+</style>
 <div class="row row-cols-1 row-cols-md-3 g-4  mt-3"> 
     {% for vacante in vacantes %}
-      <div class="col"> <!-- Cada tarjeta estará en su propia columna -->
+      <div class="col"> 
         <div class="card">
           <div class="card-body">
             <strong><h5 class="card-title">{{ vacante.titulo }}</h5></strong>
