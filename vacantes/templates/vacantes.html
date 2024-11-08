@@ -45,21 +45,31 @@
     transform: translateY(-2px);
   }
 </style>
-<div class="row row-cols-1 row-cols-md-3 g-4  mt-3"> 
-    {% for vacante in vacantes %}
-      <div class="col"> 
-        <div class="card">
-          <div class="card-body">
-            <strong><h5 class="card-title">{{ vacante.titulo }}</h5></strong>
-            <p class="card-text">{{ vacante.descripcion }}
-                <br><strong>Fecha limite para aplicar:</strong> {{ vacante.fecha_cierre }}.
-                <br><strong>Ubicación:</strong> {{ vacante.ubicacion }}.
-                <br><strong>Jornada:</strong> {{ vacante.jornada }}.
-            </p>
-            <a href="#" class="btn btn-success">Aplicar</a>
-          </div>
-        </div>
+{% if messages %}
+  <div class="container mt-3">
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
       </div>
     {% endfor %}
+  </div>
+{% endif %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-3"> 
+  {% for vacante in vacantes %}
+    <div class="col"> 
+      <div class="card">
+        <div class="card-body">
+          <strong><h5 class="card-title">{{ vacante.titulo }}</h5></strong>
+          <p class="card-text">{{ vacante.descripcion }}
+              <br><strong>Fecha límite para aplicar:</strong> {{ vacante.fecha_cierre }}.
+              <br><strong>Ubicación:</strong> {{ vacante.ubicacion }}.
+              <br><strong>Jornada:</strong> {{ vacante.jornada }}.
+          </p>
+          <a href="{% url 'aplicar_vacante' vacante.id %}" class="btn btn-success">Aplicar</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>
 {% endblock content %}

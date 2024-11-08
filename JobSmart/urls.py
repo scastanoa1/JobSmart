@@ -24,6 +24,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls,name='Admin'),
     path('vacantes/', vacantesViews.busquedaVacantes,name='vacantes'),
+    path('aplicar/<int:vacante_id>/', vacantesViews.aplicar_vacante, name='aplicar_vacante'),
     path('',resumesViews.showHomepage, name='home'),
     path('resume/',resumesViews.uploadResume, name='resumes'),
     path('iniciar_proceso/<int:resume_id>/<int:vacante_id>/', resumesViews.obtenerPreguntas, name='iniciar_proceso'),
